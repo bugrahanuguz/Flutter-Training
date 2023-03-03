@@ -80,11 +80,34 @@ class _IHomeState extends State<IHome> with SingleTickerProviderStateMixin {
               style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  for (var item in laps) Text(item.toString()),
-                ],
-                // children: laps.map((e) => Text(e.toString())).toList(),
+              child: Container(
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.lightBlue),
+                    borderRadius: BorderRadius.circular(15)),
+                child: ListView.builder(
+                  itemCount: laps.length,
+                  itemBuilder: (context, index) => Container(
+                    margin: EdgeInsets.all(2),
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: Colors.lightBlue)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("${index + 1}"),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("${laps[index]}"),
+                        Icon(Icons.arrow_forward)
+                      ],
+                    ),
+                  ),
+                  // children: laps.map((e) => Text(e.toString())).toList(),
+                ),
               ),
             ),
             Row(
